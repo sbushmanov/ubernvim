@@ -69,6 +69,14 @@ function M.setup()
       end,
     }
 
+		--FrameComment
+		use {
+			"cometsong/CommentFrame.vim",
+			config = function()
+				require("config.commentframe").setup()
+			end,
+		}
+
     -- Bootstrap Neovim
     if packer_bootstrap then
       print "Restart Neovim required after installation!"
