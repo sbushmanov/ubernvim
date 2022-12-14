@@ -29,7 +29,7 @@ function M.setup()
       D = { "<Cmd>%bd|e#|bd#<Cr>", "Delete all buffers" },
     },
 
-    f = {
+    F = {
       name = "Find",
       f = { "<cmd>lua require('utils.finder').find_files()<cr>", "Files" },
       b = { "<cmd>FzfLua buffers<cr>", "Buffers" },
