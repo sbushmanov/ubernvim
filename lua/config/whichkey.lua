@@ -65,10 +65,8 @@ function M.setup()
       D = { "<Cmd>%bd|e#|bd#<Cr>", "Delete All Buffers" },
     },
 
-<<<<<<< HEAD
     f = keymaps_f,
     p = keymaps_p,
-=======
     F = {
       name = "Find",
       f = { "<cmd>lua require('utils.finder').find_files()<cr>", "Files" },
@@ -78,7 +76,6 @@ function M.setup()
       c = { "<cmd>FzfLua commands<cr>", "Commands" },
       e = { "<cmd>NvimTreeToggle<cr>", "Explorer" },
     },
->>>>>>> 11-lsp
 
     z = {
       name = "Packer",
