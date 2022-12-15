@@ -406,6 +406,13 @@ function M.setup()
       end,
       disable = true,
     }
+		--FrameComment
+		use {
+			"cometsong/CommentFrame.vim",
+			config = function()
+				require("config.commentframe").setup()
+			end,
+		}
 
     -- Treesitter
     use {

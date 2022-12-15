@@ -58,7 +58,7 @@ local function normal_keymap()
   local keymap = {
     ["w"] = { "<cmd>update!<CR>", "Save" },
     ["q"] = { "<cmd>q!<CR>", "Quit" },
-    -- ["t"] = { "<cmd>ToggleTerm<CR>", "Terminal" },
+    ["t"] = { "<cmd>ToggleTerm<CR>", "Terminal" },
 
     a = {
       name = "Attempt",
@@ -156,6 +156,14 @@ local function normal_keymap()
       r = { "<cmd>call vimspector#Restart()<cr>", "Restart" },
       x = { "<cmd>VimspectorReset<cr>", "Reset" },
       H = { "<cmd>lua require('config.vimspector').toggle_human_mode()<cr>", "Toggle HUMAN mode" },
+    F = {
+      name = "Find",
+      f = { "<cmd>lua require('utils.finder').find_files()<cr>", "Files" },
+      b = { "<cmd>FzfLua buffers<cr>", "Buffers" },
+      o = { "<cmd>FzfLua oldfiles<cr>", "Old files" },
+      g = { "<cmd>FzfLua live_grep<cr>", "Live grep" },
+      c = { "<cmd>FzfLua commands<cr>", "Commands" },
+      e = { "<cmd>NvimTreeToggle<cr>", "Explorer" },
     },
 
     z = {
