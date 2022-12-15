@@ -10,42 +10,6 @@ function M.setup()
     },
   }
 
-  local keymaps_f = nil -- File search
-  local keymaps_p = nil -- Project search
-
-  if PLUGINS.telescope.enabled then
-    keymaps_f = {
-      name = "Find",
-      f = { "<cmd>lua require('utils.finder').find_files()<cr>", "Files" },
-      d = { "<cmd>lua require('utils.finder').find_dotfiles()<cr>", "Dotfiles" },
-      b = { "<cmd>Telescope buffers<cr>", "Buffers" },
-      o = { "<cmd>Telescope oldfiles<cr>", "Old Files" },
-      g = { "<cmd>Telescope live_grep<cr>", "Live Grep" },
-      c = { "<cmd>Telescope commands<cr>", "Commands" },
-      r = { "<cmd>Telescope file_browser<cr>", "Browser" },
-      w = { "<cmd>Telescope current_buffer_fuzzy_find<cr>", "Current Buffer" },
-      e = { "<cmd>NvimTreeToggle<cr>", "Explorer" },
-    }
-
-    keymaps_p = {
-      name = "Project",
-      p = { "<cmd>lua require'telescope'.extensions.project.project{}<cr>", "List" },
-      s = { "<cmd>Telescope repo list<cr>", "Search" },
-    }
-  end
-
-  if PLUGINS.fzf_lua.enabled then
-    keymaps_f = {
-      name = "Find",
-      f = { "<cmd>lua require('utils.finder').find_files()<cr>", "Files" },
-      b = { "<cmd>FzfLua buffers<cr>", "Buffers" },
-      o = { "<cmd>FzfLua oldfiles<cr>", "Old Files" },
-      g = { "<cmd>FzfLua live_grep<cr>", "Live Grep" },
-      c = { "<cmd>FzfLua commands<cr>", "Commands" },
-      e = { "<cmd>NvimTreeToggle<cr>", "Explorer" },
-    }
-  end
-
   local opts = {
     mode = "n", -- Normal mode
     prefix = "<leader>",
@@ -63,18 +27,6 @@ function M.setup()
       name = "Buffer",
       c = { "<Cmd>bd!<Cr>", "Close Buffer" },
       D = { "<Cmd>%bd|e#|bd#<Cr>", "Delete All Buffers" },
-    },
-
-    f = keymaps_f,
-    p = keymaps_p,
-    F = {
-      name = "Find",
-      f = { "<cmd>lua require('utils.finder').find_files()<cr>", "Files" },
-      b = { "<cmd>FzfLua buffers<cr>", "Buffers" },
-      o = { "<cmd>FzfLua oldfiles<cr>", "Old files" },
-      g = { "<cmd>FzfLua live_grep<cr>", "Live grep" },
-      c = { "<cmd>FzfLua commands<cr>", "Commands" },
-      e = { "<cmd>NvimTreeToggle<cr>", "Explorer" },
     },
 
     z = {
