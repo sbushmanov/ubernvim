@@ -158,6 +158,13 @@ function M.setup()
         require("nvim-gps").setup()
       end,
     }
+		--FrameComment
+		use {
+			"cometsong/CommentFrame.vim",
+			config = function()
+				require("config.commentframe").setup()
+			end,
+		}
 
     -- Treesitter
     use {
