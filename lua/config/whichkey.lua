@@ -29,6 +29,11 @@ function M.setup()
       D = { "<Cmd>%bd|e#|bd#<Cr>", "Delete all buffers" },
     },
 
+    C = {
+      name = "Comment",
+      h = { ":CommentFrameHashDash", "Hash" },
+    },
+
     F = {
       name = "Find",
       f = { "<cmd>lua require('utils.finder').find_files()<cr>", "Files" },
