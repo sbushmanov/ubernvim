@@ -41,6 +41,28 @@ function M.setup()
   local function plugins(use)
     use { "wbthomason/packer.nvim" }
 
+    use({
+      "scalameta/nvim-metals",
+      requires = {
+        "nvim-lua/plenary.nvim",
+        "mfussenegger/nvim-dap",
+      },
+      config = function()
+        require("config.metals").setup()
+      end,
+    })
+    
+  use({
+        "hrsh7th/nvim-cmp",
+      requires = {
+        { "hrsh7th/cmp-nvim-lsp" },
+        { "hrsh7th/cmp-vsnip" },
+        { "hrsh7th/vim-vsnip" },
+        { "saadparwaiz1/cmp_luasnip" },
+
+      },
+    })
+
     -- Load only when require
     use { "nvim-lua/plenary.nvim", module = "plenary" }
 
@@ -244,36 +266,6 @@ function M.setup()
         { "ms-jpq/coq.thirdparty", branch = "3p", module = "coq_3p" },
       },
       disable = true,
-    }
-
-    use {
-      "hrsh7th/nvim-cmp",
-      event = "InsertEnter",
-      opt = true,
-      config = function()
-        require("config.cmp").setup()
-      end,
-      wants = { "LuaSnip" },
-      requires = {
-        "hrsh7th/cmp-buffer",
-        "hrsh7th/cmp-path",
-        "hrsh7th/cmp-nvim-lua",
-        "ray-x/cmp-treesitter",
-        "hrsh7th/cmp-cmdline",
-        "saadparwaiz1/cmp_luasnip",
-        "hrsh7th/cmp-calc",
-        "f3fora/cmp-spell",
-        "hrsh7th/cmp-emoji",
-        {
-          "L3MON4D3/LuaSnip",
-          wants = "friendly-snippets",
-          config = function()
-            require("config.luasnip").setup()
-          end,
-        },
-        "rafamadriz/friendly-snippets",
-        disable = false,
-      },
     }
 
     -- Auto pairs
