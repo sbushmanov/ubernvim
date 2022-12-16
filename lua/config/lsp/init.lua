@@ -2,12 +2,10 @@ local M = {}
 
 local servers = {
   gopls = {},
-  html = {},
   jsonls = {},
   pyright = {},
   rust_analyzer = {},
   sumneko_lua = {},
-  tsserver = {},
   vimls = {},
 }
 

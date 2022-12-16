@@ -170,13 +170,13 @@ function M.setup()
         require("nvim-gps").setup()
       end,
     }
-		--FrameComment
-		use {
-			"cometsong/CommentFrame.vim",
-			config = function()
-				require("config.commentframe").setup()
-			end,
-		}
+    --FrameComment
+    use {
+      "cometsong/CommentFrame.vim",
+      config = function()
+        require("config.commentframe").setup()
+      end,
+    }
 
     -- Treesitter
     use {
@@ -321,7 +321,7 @@ function M.setup()
       opt = true,
       event = "BufReadPre",
       -- wants = { "nvim-lsp-installer", "lsp_signature.nvim", "cmp-nvim-lsp" },  -- for nvim-cmp
-      wants = { "nvim-lsp-installer", "lsp_signature.nvim", "coq_nvim" },  -- for coq.nvim
+      wants = { "nvim-lsp-installer", "lsp_signature.nvim", "coq_nvim" }, -- for coq.nvim
       config = function()
         require("config.lsp").setup()
       end,
