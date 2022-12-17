@@ -51,9 +51,23 @@ function M.setup()
         require("config.metals").setup()
       end,
     })
-    
-  use({
-        "hrsh7th/nvim-cmp",
+
+    -- LSP
+    use({
+      "neovim/nvim-lspconfig",
+      requires = {
+        "nvim-lua/lsp_extensions.nvim",
+        'williamboman/mason.nvim',
+        'williamboman/mason-lspconfig.nvim',
+        'j-hui/fidget.nvim',
+      },
+      config = function()
+        require("config.lspconfig").setup()
+      end,
+    })
+
+    use({
+      "hrsh7th/nvim-cmp",
       requires = {
         { "hrsh7th/cmp-nvim-lsp" },
         { "hrsh7th/cmp-vsnip" },
@@ -183,13 +197,13 @@ function M.setup()
         require("nvim-gps").setup()
       end,
     }
-		--FrameComment
-		use {
-			"cometsong/CommentFrame.vim",
-			config = function()
-				require("config.commentframe").setup()
-			end,
-		}
+    --FrameComment
+    use {
+      "cometsong/CommentFrame.vim",
+      config = function()
+        require("config.commentframe").setup()
+      end,
+    }
 
     -- Treesitter
     use {
@@ -249,7 +263,13 @@ function M.setup()
       end,
       disable = true,
     }
-    use { "nvim-telescope/telescope.nvim", module = "telescope", as = "telescope" }
+
+    -- Telescope
+    use {
+      "nvim-telescope/telescope.nvim",
+      module = "telescope",
+      as = "telescope",
+    }
 
     -- Completion
     use {

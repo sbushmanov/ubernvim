@@ -49,7 +49,7 @@ function M.setup()
       u = { "<cmd>PackerUpdate<cr>", "Update" },
     },
 
-    g = {
+    G = {
       name = "Git",
       s = { "<cmd>Neogit<CR>", "Status" },
     },
