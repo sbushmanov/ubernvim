@@ -243,7 +243,7 @@ function M.setup()
     -- Buffer line
     use {
       "akinsho/nvim-bufferline.lua",
-      event = "BufReadPre",
+    -- event = "BufReadPre",
       wants = "nvim-web-devicons",
       config = function()
         require("config.bufferline").setup()
