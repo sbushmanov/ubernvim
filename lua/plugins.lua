@@ -41,6 +41,8 @@ function M.setup()
   local function plugins(use)
     use { "wbthomason/packer.nvim" }
 
+    use { "junegunn/vim-easy-align" }
+
     use({
       "scalameta/nvim-metals",
       requires = {
