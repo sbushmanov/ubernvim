@@ -50,6 +50,7 @@ function M.setup()
       config = function()
         require("config.metals").setup()
       end,
+      disable = false
     })
 
     -- LSP
@@ -73,7 +74,6 @@ function M.setup()
         { "hrsh7th/cmp-vsnip" },
         { "hrsh7th/vim-vsnip" },
         { "saadparwaiz1/cmp_luasnip" },
-
       },
     })
 
@@ -243,7 +243,7 @@ function M.setup()
     -- Buffer line
     use {
       "akinsho/nvim-bufferline.lua",
-    -- event = "BufReadPre",
+      -- event = "BufReadPre",
       wants = "nvim-web-devicons",
       config = function()
         require("config.bufferline").setup()
@@ -267,8 +267,13 @@ function M.setup()
     -- Telescope
     use {
       "nvim-telescope/telescope.nvim",
-      module = "telescope",
-      as = "telescope",
+      requires = {
+        { "nvim-lua/popup.nvim" },
+        { "nvim-lua/plenary.nvim" },
+        { "kyazdani42/nvim-web-devicons" },
+      },
+      -- module = "telescope",
+      -- as = "telescope",
     }
 
     -- Completion
