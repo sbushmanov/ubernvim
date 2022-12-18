@@ -207,6 +207,9 @@ function M.setup()
       end,
     }
 
+    -- Bqf
+    use {'kevinhwang91/nvim-bqf'}
+
     -- Treesitter
     use {
       "nvim-treesitter/nvim-treesitter",
