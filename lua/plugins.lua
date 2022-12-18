@@ -199,6 +199,7 @@ function M.setup()
         require("nvim-gps").setup()
       end,
     }
+
     --FrameComment
     use {
       "cometsong/CommentFrame.vim",
@@ -208,7 +209,15 @@ function M.setup()
     }
 
     -- Bqf
-    use {'kevinhwang91/nvim-bqf'}
+    use { 'kevinhwang91/nvim-bqf' }
+
+    use({
+      "glepnir/lspsaga.nvim",
+      branch = "main",
+      config = function()
+        require("config.lspsaga").setup()
+      end,
+    })
 
     -- Treesitter
     use {
