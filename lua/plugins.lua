@@ -131,7 +131,7 @@ function M.setup()
     -- Better icons
     use {
       "kyazdani42/nvim-web-devicons",
-      module = "nvim-web-devicons",
+      -- module = "nvim-web-devicons",
       config = function()
         require("nvim-web-devicons").setup { default = true }
       end,
@@ -140,7 +140,6 @@ function M.setup()
     -- Better Comment
     use {
       "numToStr/Comment.nvim",
-      keys = { "gc", "gcc", "gbc" },
       config = function()
         require("Comment").setup {}
       end,
@@ -334,6 +333,9 @@ function M.setup()
       event = "InsertEnter",
       disable = false,
     }
+    
+--    -- Key map conflicts
+--    use { "lukhio/vim-mapping-conflicts" }
 
     -- Bootstrap Neovim
     if packer_bootstrap then
