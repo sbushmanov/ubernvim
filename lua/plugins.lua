@@ -75,7 +75,6 @@ function M.setup()
         { "hrsh7th/cmp-nvim-lsp" },
         { "hrsh7th/cmp-vsnip" },
         { "hrsh7th/vim-vsnip" },
-        { "saadparwaiz1/cmp_luasnip" },
       },
     })
 
