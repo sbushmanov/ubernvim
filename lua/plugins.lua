@@ -188,6 +188,7 @@ function M.setup()
       end,
       wants = "nvim-web-devicons",
     }
+
     use {
       "SmiteshP/nvim-gps",
       requires = "nvim-treesitter/nvim-treesitter",
