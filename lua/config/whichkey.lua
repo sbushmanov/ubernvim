@@ -39,11 +39,11 @@ function M.setup()
       c = { "<cmd>Lspsaga code_action<CR>", "Code Action" },
       r = { "<cmd>Lspsaga rename<CR>", "Rename" },
       d = { "<cmd>Lspsaga peek_definition<CR>", "Definition" },
-      D = { "<cmd>lua vim.lsp.buf.definition()", "Definition" },
+      D = { "<cmd>lua vim.lsp.buf.definition()<CR>", "Definition" },
       k = { "<cmd>Lspsaga hover_doc<CR>", "Hover Doc" },
       o = { "<cmd>Lspsaga outline<CR>", "Outline" },
       A = { "<cmd>lua vim.diagnostic.setqflist()<cr>", "All Diagnostics" },
-      E = { "<cmd>lua vim.diagnostic.setqflist({ severity = 'E'})", "Errors" },
+      E = { "<cmd>lua vim.diagnostic.setqflist({ severity = 'E'})<cr>", "Errors" },
       B = { "<cmd>lua vim.diagnostic.setloclist()<cr>", "Buffer Diagnostics" },
     },
     d = {
