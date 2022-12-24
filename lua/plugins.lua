@@ -55,12 +55,14 @@ function M.setup()
     -- LSP
     use({
       "neovim/nvim-lspconfig",
+      wants = { "nvim-lsp-installer", "lsp_signature.nvim", "coq_nvim" },
       requires = {
         "nvim-lua/lsp_extensions.nvim",
         'williamboman/mason.nvim',
         'williamboman/mason-lspconfig.nvim',
         'j-hui/fidget.nvim',
         "hrsh7th/cmp-nvim-lsp",
+        "williamboman/nvim-lsp-installer",
         "ray-x/lsp_signature.nvim",
       },
       config = function()
@@ -74,6 +76,7 @@ function M.setup()
         { "hrsh7th/cmp-nvim-lsp" },
         { "hrsh7th/cmp-vsnip" },
         { "hrsh7th/vim-vsnip" },
+        { "ray-x/cmp-treesitter" },
       },
       config = function()
         require("config.cmp").setup()
