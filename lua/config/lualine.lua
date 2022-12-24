@@ -23,7 +23,7 @@ function M.setup()
           color = { fg = "#f3ca28" },
         },
       },
-      lualine_x = { "g:metals_status", "encoding", "fileformat", "filetype" },
+      lualine_x = { "encoding", "fileformat", "filetype" },
       lualine_y = { "progress" },
       lualine_z = { "location" },
     },

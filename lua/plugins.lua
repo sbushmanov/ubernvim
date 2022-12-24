@@ -74,19 +74,19 @@ function M.setup()
 
     use({
       "hrsh7th/nvim-cmp",
-      event = "InsertEnter",
-      opt = true,
+      requires = {
+        { "hrsh7th/cmp-buffer" },
+        { "hrsh7th/cmp-nvim-lsp" },
+        { "hrsh7th/cmp-path" },
+        { "hrsh7th/cmp-vsnip" },
+        { "hrsh7th/vim-vsnip" },
+        { "onsails/lspkind-nvim" },
+      },
       config = function()
         require("config.cmp").setup()
       end,
-      requires = {
-        { "hrsh7th/cmp-nvim-lsp" },
-        { "hrsh7th/cmp-vsnip" },
-        { "hrsh7th/vim-vsnip" },
-      },
     })
 
-    -- Load only when require
     use { "nvim-lua/plenary.nvim", module = "plenary" }
 
     -- Colorscheme
@@ -169,6 +169,7 @@ function M.setup()
       end,
       disable = true,
     }
+
     use {
       "ggandor/lightspeed.nvim",
       keys = { "s", "S", "f", "F", "t", "T" },
@@ -190,7 +191,7 @@ function M.setup()
     -- Status line
     use {
       "nvim-lualine/lualine.nvim",
-      event = "VimEnter",
+      after = "nvim-treesitter",
       config = function()
         require("config.lualine").setup()
       end,
@@ -341,8 +342,8 @@ function M.setup()
       event = "InsertEnter",
       disable = false,
     }
---    -- Key map conflicts
---    use { "lukhio/vim-mapping-conflicts" }
+    --    -- Key map conflicts
+    --    use { "lukhio/vim-mapping-conflicts" }
 
     -- Bootstrap Neovim
     if packer_bootstrap then
