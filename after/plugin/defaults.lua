@@ -19,7 +19,7 @@ opt.smartcase      = true -- Smart case
 opt.updatetime     = 250 --Decrease update time
 opt.signcolumn     = "yes" -- Always show sign column
 opt.clipboard      = "unnamedplus" -- Access system clipboard
-opt.timeoutlen     = 1000 --	Time in milliseconds to wait for a mapped sequence to complete.
+opt.timeoutlen     = 500 --	Time in milliseconds to wait for a mapped sequence to complete.
 opt.showmode       = false -- Do not need to show the mode. We use the statusline instead.
 
 -- Highlight on yank

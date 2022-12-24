@@ -41,8 +41,10 @@ function M.setup()
   local function plugins(use)
     use { "wbthomason/packer.nvim" }
 
+    -- Align through <Enter>
     use { "junegunn/vim-easy-align" }
 
+    -- Scala metals
     use({
       "scalameta/nvim-metals",
       requires = {
@@ -182,7 +184,7 @@ function M.setup()
     -- Status line
     use {
       "nvim-lualine/lualine.nvim",
-      after = "nvim-treesitter",
+      event = "VimEnter",
       config = function()
         require("config.lualine").setup()
       end,
