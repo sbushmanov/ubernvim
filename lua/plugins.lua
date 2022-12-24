@@ -65,6 +65,7 @@ function M.setup()
         'williamboman/mason.nvim',
         'williamboman/mason-lspconfig.nvim',
         'j-hui/fidget.nvim',
+        "hrsh7th/cmp-nvim-lsp",
       },
       config = function()
         require("config.lspconfig").setup()
@@ -73,6 +74,11 @@ function M.setup()
 
     use({
       "hrsh7th/nvim-cmp",
+      event = "InsertEnter",
+      opt = true,
+      config = function()
+        require("config.cmp").setup()
+      end,
       requires = {
         { "hrsh7th/cmp-nvim-lsp" },
         { "hrsh7th/cmp-vsnip" },
@@ -335,7 +341,6 @@ function M.setup()
       event = "InsertEnter",
       disable = false,
     }
-    
 --    -- Key map conflicts
 --    use { "lukhio/vim-mapping-conflicts" }
 
