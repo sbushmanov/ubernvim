@@ -51,12 +51,7 @@ function M.setup()
         "nvim-lua/plenary.nvim",
         "mfussenegger/nvim-dap",
       },
-      config = function()
-        require("config.metals").setup()
-      end,
-      disable = false
     })
-
     -- LSP
     use({
       "neovim/nvim-lspconfig",
@@ -66,6 +61,7 @@ function M.setup()
         'williamboman/mason-lspconfig.nvim',
         'j-hui/fidget.nvim',
         "hrsh7th/cmp-nvim-lsp",
+        "ray-x/lsp_signature.nvim",
       },
       config = function()
         require("config.lspconfig").setup()
@@ -75,12 +71,9 @@ function M.setup()
     use({
       "hrsh7th/nvim-cmp",
       requires = {
-        { "hrsh7th/cmp-buffer" },
         { "hrsh7th/cmp-nvim-lsp" },
-        { "hrsh7th/cmp-path" },
         { "hrsh7th/cmp-vsnip" },
         { "hrsh7th/vim-vsnip" },
-        { "onsails/lspkind-nvim" },
       },
       config = function()
         require("config.cmp").setup()
