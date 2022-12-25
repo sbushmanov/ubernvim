@@ -51,7 +51,11 @@ function M.setup()
         "nvim-lua/plenary.nvim",
         "mfussenegger/nvim-dap",
       },
+      config = function()
+        require("config.metals").setup()
+      end,
     })
+
     -- LSP
     use({
       "neovim/nvim-lspconfig",
