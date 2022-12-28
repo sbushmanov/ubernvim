@@ -59,16 +59,21 @@ function M.setup()
     -- LSP
     use({
       "neovim/nvim-lspconfig",
-      wants = { "nvim-lsp-installer", "lsp_signature.nvim", "coq_nvim" },
+      wants = { "nvim-lsp-installer", "lsp_signature.nvim", "coq_nvim", "cmp-nvim-lsp", "lua-dev.nvim", "vim-illuminate"},
       requires = {
         "nvim-lua/lsp_extensions.nvim",
         'williamboman/mason.nvim',
         'williamboman/mason-lspconfig.nvim',
-        'j-hui/fidget.nvim',
         "hrsh7th/cmp-nvim-lsp",
         "williamboman/nvim-lsp-installer",
         "ray-x/lsp_signature.nvim",
         "folke/neodev.nvim",
+        {
+          "j-hui/fidget.nvim",
+          config = function()
+            require("fidget").setup {}
+          end,
+        },
       },
       config = function()
         require("config.lspconfig").setup()
