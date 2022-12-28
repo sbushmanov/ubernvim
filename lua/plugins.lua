@@ -68,6 +68,7 @@ function M.setup()
         "hrsh7th/cmp-nvim-lsp",
         "williamboman/nvim-lsp-installer",
         "ray-x/lsp_signature.nvim",
+        "folke/neodev.nvim",
       },
       config = function()
         require("config.lspconfig").setup()
