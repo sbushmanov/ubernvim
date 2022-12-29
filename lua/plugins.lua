@@ -7,7 +7,7 @@ function M.setup()
   -- packer.nvim configuration
   local conf = {
     profile = {
-      enable = true,
+      enable    = true,
       threshold = 1, -- the amount in ms that a plugins load time must be over for it to be included in the profile
     },
 
