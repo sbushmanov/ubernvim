@@ -306,20 +306,14 @@ function M.setup()
 
     -- Completion
     use {
-      "ms-jpq/coq_nvim",
-      branch = "coq",
-      event = "InsertEnter",
-      opt = true,
-      run = ":COQdeps",
-      config = function()
-        require("config.coq").setup()
-      end,
-      requires = {
-        { "ms-jpq/coq.artifacts", branch = "artifacts" },
-        { "ms-jpq/coq.thirdparty", branch = "3p", module = "coq_3p" },
-      },
-      disable = true,
+     'ms-jpq/coq_nvim',
+     branch = 'coq',
+     event = "VimEnter",
+     config = 'vim.cmd[[COQnow]]',
+     enable=false
     }
+
+    use {'ms-jpq/coq.artifacts', branch = 'artifacts'}
 
     -- Auto pairs
     use {
