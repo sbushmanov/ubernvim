@@ -54,17 +54,20 @@ function M.setup()
       config = function()
         require("config.metals").setup()
       end,
+      disable = false,
     })
 
     -- LSP
     use({
       "neovim/nvim-lspconfig",
-      wants = { "nvim-lsp-installer", "lsp_signature.nvim", "coq_nvim", "cmp-nvim-lsp", "lua-dev.nvim", "vim-illuminate"},
+      wants = { "nvim-lsp-installer", "lsp_signature.nvim", "coq_nvim", "cmp-nvim-lsp", "lua-dev.nvim", "vim-illuminate" },
+      -- wants = { "nvim-lsp-installer", "coq_nvim", "cmp-nvim-lsp", "lua-dev.nvim", "vim-illuminate" },
       requires = {
         "nvim-lua/lsp_extensions.nvim",
         'williamboman/mason.nvim',
         'williamboman/mason-lspconfig.nvim',
         "hrsh7th/cmp-nvim-lsp",
+        "hrsh7th/cmp-path",
         "williamboman/nvim-lsp-installer",
         "ray-x/lsp_signature.nvim",
         "folke/neodev.nvim",
@@ -87,6 +90,7 @@ function M.setup()
         { "hrsh7th/cmp-vsnip" },
         { "hrsh7th/vim-vsnip" },
         { "ray-x/cmp-treesitter" },
+        { "hrsh7th/cmp-path" },
       },
       config = function()
         require("config.cmp").setup()
@@ -103,12 +107,26 @@ function M.setup()
       end,
     }
 
+    -- -- Startup screen
+    -- use {
+    --   "goolord/alpha-nvim",
+    --   config = function()
+    --     require("config.alpha").setup()
+    --   end,
+    -- }
     -- Startup screen
     use {
-      "goolord/alpha-nvim",
+      'glepnir/dashboard-nvim',
+      event = 'VimEnter',
+      theme = 'doom',
+      preview = 'command',
       config = function()
-        require("config.alpha").setup()
+        require('dashboard').setup {
+          config = {
+          }
+        }
       end,
+      requires = { 'nvim-tree/nvim-web-devicons' }
     }
 
     -- Better Netrw
@@ -123,14 +141,14 @@ function M.setup()
       end,
     }
 
-    -- WhichKey
-    use {
-      "folke/which-key.nvim",
-      event = "VimEnter",
-      config = function()
-        require("config.whichkey").setup()
-      end,
-    }
+    -- -- WhichKey
+    -- use {
+    --   "folke/which-key.nvim",
+    --   event = "VimEnter",
+    --   config = function()
+    --     require("config.whichkey").setup()
+    --   end,
+    -- }
 
     -- IndentLine
     use {
@@ -143,7 +161,7 @@ function M.setup()
 
     -- Better icons
     use {
-      "kyazdani42/nvim-web-devicons",
+      "nvim-tree/nvim-web-devicons",
       -- module = "nvim-web-devicons",
       config = function()
         require("nvim-web-devicons").setup { default = true }
@@ -161,28 +179,23 @@ function M.setup()
     -- Better surround
     use { "tpope/vim-surround", event = "InsertEnter" }
 
-    -- Motions
-    use { "andymass/vim-matchup", event = "CursorMoved" }
-    use { "wellle/targets.vim", event = "CursorMoved" }
-    use { "unblevable/quick-scope", event = "CursorMoved", disable = false }
-    use { "chaoren/vim-wordmotion", opt = true, fn = { "<Plug>WordMotion_w" } }
+    use 'ggandor/lightspeed.nvim'
 
     use {
-      "phaazon/hop.nvim",
-      cmd = { "HopWord", "HopChar1" },
+      "mrjones2014/legendary.nvim",
+      -- event = 'VimEnter',
+      opt = true,
+      keys = { [[<C-l>]] },
+      wants = { "dressing.nvim" },
+      module = { "legendary" },
+      cmd = { "Legendary" },
       config = function()
-        require("hop").setup {}
+        require("config.legendary").setup()
       end,
-      disable = true,
+      -- requires = { "stevearc/dressing.nvim" },
+      disable = false
     }
 
-    use {
-      "ggandor/lightspeed.nvim",
-      keys = { "s", "S", "f", "F", "t", "T" },
-      config = function()
-        require("lightspeed").setup {}
-      end,
-    }
 
     -- Markdown
     use {
@@ -229,7 +242,7 @@ function M.setup()
       "glepnir/lspsaga.nvim",
       branch = "main",
       config = function()
-        require("config.lspsaga").setup()
+        require('config.lspsaga').setup()
       end,
     })
 
@@ -258,21 +271,39 @@ function M.setup()
       wants = "nvim-web-devicons",
     }
 
-    -- nvim-tree
     use {
       "kyazdani42/nvim-tree.lua",
+      requires = "kyazdani42/nvim-web-devicons",
       wants = "nvim-web-devicons",
-      cmd = { "NvimTreeToggle", "NvimTreeClose" },
+      view = {
+        width = 25
+      },
       config = function()
-        require("config.nvimtree").setup()
-      end,
+        require("nvim-web-devicons").setup()
+        require("nvim-tree").setup {
+          hijack_cursor = true,
+          view = {
+            width = 25
+          }
+        }
+      end
     }
+
+    -- -- nvim-tree
+    -- use {
+    --   "nvim-tree/nvim-tree.lua",
+    --   wants = "nvim-web-devicons",
+    --   cmd = { "NvimTreeToggle", "NvimTreeClose" },
+    --   config = function()
+    --     require("config.nvimtree").setup()
+    --   end,
+    -- }
 
     -- Buffer line
     use {
       "akinsho/nvim-bufferline.lua",
       -- event = "BufReadPre",
-      wants = "nvim-web-devicons",
+      requires = 'nvim-tree/nvim-web-devicons',
       config = function()
         require("config.bufferline").setup()
       end,
@@ -289,7 +320,7 @@ function M.setup()
           },
         }
       end,
-      disable = true,
+      disable = false,
     }
 
     -- Telescope
@@ -298,7 +329,7 @@ function M.setup()
       requires = {
         { "nvim-lua/popup.nvim" },
         { "nvim-lua/plenary.nvim" },
-        { "kyazdani42/nvim-web-devicons" },
+        { "nvim-tree/nvim-web-devicons" },
       },
       -- module = "telescope",
       -- as = "telescope",
@@ -306,14 +337,12 @@ function M.setup()
 
     -- Completion
     use {
-     'ms-jpq/coq_nvim',
-     branch = 'coq',
-     event = "VimEnter",
-     config = 'vim.cmd[[COQnow]]',
-     enable=false
+      'ms-jpq/coq_nvim',
+      branch = 'coq',
+      event = "VimEnter",
+      config = 'vim.cmd[[COQnow]]',
+      enable = false
     }
-
-    use {'ms-jpq/coq.artifacts', branch = 'artifacts'}
 
     -- Auto pairs
     use {

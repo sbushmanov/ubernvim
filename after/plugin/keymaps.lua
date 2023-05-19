@@ -2,6 +2,10 @@ local keymap = vim.api.nvim_set_keymap
 local default_opts = { noremap = true, silent = true }
 local expr_opts = { noremap = true, expr = true, silent = true }
 
+-- toggle numbering
+keymap("", "<F2>", '<cmd>exec &nu==&rnu? "se nu!" : "se rnu!"<CR>', default_opts)
+
+-- align with Enter in V-mode
 keymap("v", "<Enter>", "<Plug>(EasyAlign)", default_opts)
 
 -- Better escape using jk in insert and terminal mode
@@ -40,3 +44,6 @@ keymap("n", "<Right>", ":vertical resize -1<CR>", default_opts)
 keymap("n", "<Up>", ":resize -1<CR>", default_opts)
 keymap("n", "<Down>", ":resize +1<CR>", default_opts)
 
+--Tree FileManager
+keymap("n", "<leader>tt", "<cmd>NvimTreeToggle<CR>", default_opts )
+keymap("n", "<leader>tf", "<cmd>NvimTreeFindFile<CR>", default_opts )
