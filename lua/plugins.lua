@@ -183,8 +183,8 @@ function M.setup()
 
     use {
       "mrjones2014/legendary.nvim",
-      -- event = 'VimEnter',
-      opt = true,
+      event = 'VimEnter',
+      -- opt = true,
       keys = { [[<C-l>]] },
       wants = { "dressing.nvim" },
       module = { "legendary" },
@@ -192,7 +192,7 @@ function M.setup()
       config = function()
         require("config.legendary").setup()
       end,
-      -- requires = { "stevearc/dressing.nvim" },
+      requires = { "stevearc/dressing.nvim" },
       disable = false
     }
 
@@ -240,6 +240,8 @@ function M.setup()
 
     use({
       "glepnir/lspsaga.nvim",
+      requires = "legendary",
+      wants = "legendary",
       branch = "main",
       config = function()
         require('config.lspsaga').setup()
@@ -327,12 +329,33 @@ function M.setup()
     use {
       "nvim-telescope/telescope.nvim",
       requires = {
-        { "nvim-lua/popup.nvim" },
-        { "nvim-lua/plenary.nvim" },
-        { "nvim-tree/nvim-web-devicons" },
+        "nvim-lua/popup.nvim",
+        "nvim-lua/plenary.nvim",
+        { "nvim-telescope/telescope-fzf-native.nvim", run = "make" },
+        "nvim-telescope/telescope-project.nvim",
+        "cljoly/telescope-repo.nvim",
+        "nvim-telescope/telescope-file-browser.nvim",
+        {
+          "ahmedkhalf/project.nvim",
+          config = function()
+            require("project_nvim").setup {}
+          end,
+        },
       },
-      -- module = "telescope",
-      -- as = "telescope",
+      wants = {
+        "plenary.nvim",
+        "popup.nvim",
+        "telescope-fzf-native.nvim",
+        "telescope-project.nvim",
+        "telescope-repo.nvim",
+        "telescope-file-browser.nvim",
+        "project.nvim",
+      },
+      config = function()
+        require("config.telescope").setup()
+      end,
+      cmd = "Telescope",
+      module = "telescope"
     }
 
     -- Completion

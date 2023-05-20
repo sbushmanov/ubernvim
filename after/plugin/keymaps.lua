@@ -35,7 +35,7 @@ keymap("n", "<S-l>", ":bnext<CR>", default_opts)
 keymap("n", "<ESC>", ":nohlsearch<Bar>:echo<CR>", default_opts)
 
 -- Move selected line / block of text in visual mode
-keymap("x", "K", ":move '<-2<CR>gv-gv", default_opts)
+-- keymap("x", "K", ":move '<-2<CR>gv-gv", default_opts)
 keymap("x", "J", ":move '>+1<CR>gv-gv", default_opts)
 
 -- Resizing panes
@@ -47,3 +47,7 @@ keymap("n", "<Down>", ":resize +1<CR>", default_opts)
 --Tree FileManager
 keymap("n", "<leader>tt", "<cmd>NvimTreeToggle<CR>", default_opts )
 keymap("n", "<leader>tf", "<cmd>NvimTreeFindFile<CR>", default_opts )
+
+vim.keymap.set({ 'i' }, 'K', function() require('lsp_signature').toggle_float_win()
+    end, { silent = true, noremap = true, desc = 'toggle signature' })
+
