@@ -115,20 +115,20 @@ function M.setup()
     --   end,
     -- }
     -- Startup screen
-    use {
-      'glepnir/dashboard-nvim',
-      event = 'VimEnter',
-      theme = 'doom',
-      preview = 'command',
-      config = function()
-        require('dashboard').setup {
-          config = {
-          }
-        }
-      end,
-      requires = { 'nvim-tree/nvim-web-devicons' }
-    }
-
+    -- use {
+    --   'glepnir/dashboard-nvim',
+    --   event = 'VimEnter',
+    --   theme = 'doom',
+    --   preview = 'command',
+    --   config = function()
+    --     require('dashboard').setup {
+    --       config = {
+    --       }
+    --     }
+    --   end,
+    --   requires = { 'nvim-tree/nvim-web-devicons' }
+    -- }
+    --
     -- Better Netrw
     use { "tpope/vim-vinegar" }
 
@@ -182,17 +182,18 @@ function M.setup()
     use 'ggandor/lightspeed.nvim'
 
     use {
-      "mrjones2014/legendary.nvim",
+      'mrjones2014/legendary.nvim',
       event = 'VimEnter',
       -- opt = true,
-      keys = { [[<C-l>]] },
+      keys = { [['<C-l>']] },
       wants = { "dressing.nvim" },
-      module = { "legendary" },
+      -- module = { "legendary" },
       cmd = { "Legendary" },
       config = function()
         require("config.legendary").setup()
       end,
-      requires = { "stevearc/dressing.nvim" },
+      requires = {"stevearc/dressing.nvim",},
+      dependencies = { 'kkharji/sqlite.lua', },
       disable = false
     }
 
@@ -240,7 +241,7 @@ function M.setup()
 
     use({
       "glepnir/lspsaga.nvim",
-      requires = "legendary",
+      requires = "mrjones2014/legendary.nvim",
       wants = "legendary",
       branch = "main",
       config = function()
@@ -269,8 +270,8 @@ function M.setup()
     -- FZF Lua
     use {
       "ibhagwan/fzf-lua",
-      event = "BufEnter",
-      wants = "nvim-web-devicons",
+      -- event = "BufEnter",
+      requires = { 'nvim-tree/nvim-web-devicons' }
     }
 
     use {
