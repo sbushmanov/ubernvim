@@ -40,9 +40,9 @@ function M.setup()
 
   telescope.setup {
     defaults = {
-      file_previewer = require 'telescope.previewers'.vim_buffer_cat.new,
-      grep_previewer = require 'telescope.previewers'.vim_buffer_vimgrep.new,
-      qflist_previewer = require 'telescope.previewers'.vim_buffer_qflist.new,
+      file_previewer = require'telescope.previewers'.vim_buffer_cat.new,
+    grep_previewer = require'telescope.previewers'.vim_buffer_vimgrep.new,
+    qflist_previewer = require'telescope.previewers'.vim_buffer_qflist.new,
       buffer_previewer_maker = preview_maker,
       mappings = {
         i = {
@@ -61,6 +61,7 @@ function M.setup()
   telescope.load_extension "repo"
   telescope.load_extension "file_browser"
   telescope.load_extension "projects" -- project.nvim
+  telescope.load_extension "dap"
 end
 
 return M

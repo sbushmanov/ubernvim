@@ -115,19 +115,16 @@ function M.setup()
     --   end,
     -- }
     -- Startup screen
-    -- use {
-    --   'glepnir/dashboard-nvim',
-    --   event = 'VimEnter',
-    --   theme = 'doom',
-    --   preview = 'command',
-    --   config = function()
-    --     require('dashboard').setup {
-    --       config = {
-    --       }
-    --     }
-    --   end,
-    --   requires = { 'nvim-tree/nvim-web-devicons' }
-    -- }
+    use {
+      'glepnir/dashboard-nvim',
+      event = 'VimEnter',
+      theme = 'doom',
+      preview = 'command',
+      config = function()
+        require('config.dashboard').setup()
+      end,
+      requires = { 'nvim-tree/nvim-web-devicons' }
+    }
     --
     -- Better Netrw
     use { "tpope/vim-vinegar" }
@@ -140,6 +137,12 @@ function M.setup()
         require("config.neogit").setup()
       end,
     }
+
+    use {
+      "kdheepak/lazygit.nvim",
+      requires = { "nvim-lua/plenary.nvim" }
+    }
+
 
     -- -- WhichKey
     -- use {
@@ -192,7 +195,7 @@ function M.setup()
       config = function()
         require("config.legendary").setup()
       end,
-      requires = {"stevearc/dressing.nvim",},
+      requires = { "stevearc/dressing.nvim", },
       dependencies = { 'kkharji/sqlite.lua', },
       disable = false
     }
@@ -287,7 +290,13 @@ function M.setup()
           hijack_cursor = true,
           view = {
             width = 25
-          }
+          },
+          sync_root_with_cwd = true,
+          respect_buf_cwd = true,
+          update_focused_file = {
+            enable = true,
+            update_root = true
+          },
         }
       end
     }
@@ -326,6 +335,15 @@ function M.setup()
       disable = false,
     }
 
+    use {
+      "ahmedkhalf/project.nvim",
+      config = function()
+        require("project_nvim").setup {
+          patterns = { "build.sbt", ".git", "_darcs", ".hg", ".bzr", ".svn", "Makefile", "package.json" },
+        }
+      end,
+    }
+
     -- Telescope
     use {
       "nvim-telescope/telescope.nvim",
@@ -336,12 +354,7 @@ function M.setup()
         "nvim-telescope/telescope-project.nvim",
         "cljoly/telescope-repo.nvim",
         "nvim-telescope/telescope-file-browser.nvim",
-        {
-          "ahmedkhalf/project.nvim",
-          config = function()
-            require("project_nvim").setup {}
-          end,
-        },
+        "ahmedkhalf/project.nvim",
       },
       wants = {
         "plenary.nvim",
@@ -358,6 +371,8 @@ function M.setup()
       cmd = "Telescope",
       module = "telescope"
     }
+
+    use "nvim-telescope/telescope-dap.nvim"
 
     -- Completion
     use {

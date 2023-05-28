@@ -56,3 +56,10 @@ vim.cmd [[
   set foldmethod=expr
   set foldexpr=nvim_treesitter#foldexpr()
 ]]
+
+vim.cmd [[
+  augroup cdpwd
+      autocmd!
+      autocmd VimEnter * cd $PWD
+  augroup END
+]]
